@@ -51,6 +51,7 @@ const notification = require("./middlewares/pushNotification");
 
 //const dbConfig = require("./models");
 
+ip = "127.0.0.1";
 
 app.listen(process.env.PORT, ip);
 let dirPath = path.join(
