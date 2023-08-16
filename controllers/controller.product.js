@@ -33,6 +33,7 @@ const product_get = (req, res) => {
   Product.findAndCountAll({ where: condition })
     //.populate("items") //access to items ref from product
     .then((data) => {
+      console.log("datar ", rows);
       return res.json({
         total: data.count,
         page: page,
@@ -50,7 +51,7 @@ const product_get = (req, res) => {
     });
 
   //console.log("request  ", req);
-  console.log("datar ", rows);
+  //console.log("datar ", rows);
   console.log("in products ", Product);
 
   /*Product.find()
