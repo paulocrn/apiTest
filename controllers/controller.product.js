@@ -14,7 +14,7 @@ const product_get = (req, res) => {
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
   const {rows, count} = Product.findAndCountAll({ where: condition }).then(data => {
-    //console.log("data ", rows);
+    console.log("data ", rows);
     return res.json({
       total: count,
       page: page,
