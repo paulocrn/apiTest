@@ -13,7 +13,7 @@ const product_get = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-  const {rows, count} = Product.findAndCountAll({ where: condition }).then(data => {
+  /*const {rows, count} = Product.findAndCountAll({ where: condition }).then(data => {
     console.log("data ", rows);
     return res.json({
       total: count,
@@ -28,10 +28,29 @@ const product_get = (req, res) => {
       message:
         err.message || "Some error have occurred when retrieving the tutorials."
     });
-  });
+  });*/
+
+  Product.findAndCountAll({ where: condition })
+    //.populate("items") //access to items ref from product
+    .then((data) => {
+      return res.json({
+        total: data.count,
+        page: page,
+        pageSize: data.length,
+        content: data,
+      });
+    })
+    .catch((err) => {
+      console.log("en error");
+      return res.status(400).send({
+        status: "ERR_SERVER",
+        message: err.message,
+        content: null,
+      });
+    });
 
   //console.log("request  ", req);
-  console.log("data ", rows);
+  console.log("datar ", rows);
   console.log("in products ", Product);
 
   /*Product.find()
