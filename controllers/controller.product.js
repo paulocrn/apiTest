@@ -31,6 +31,7 @@ const product_get = (req, res) => {
   });
 
   //console.log("request  ", req);
+  console.log("data ", rows);
   console.log("in products ", Product);
 
   /*Product.find()
