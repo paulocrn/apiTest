@@ -30,10 +30,10 @@ const product_get = (req, res) => {
     });
   });*/
 
-  Product.findAndCountAll({ where: condition })
+  Product.findAll()
     //.populate("items") //access to items ref from product
     .then((data) => {
-      console.log("datar ", rows);
+      console.log("inr ", data);
       return res.json({
         total: data.count,
         page: page,
