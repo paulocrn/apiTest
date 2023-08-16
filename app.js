@@ -17,7 +17,7 @@ let ip;
 
 if (typeof (networkInterfaces.Ethernet) == "undefined") {
   //ip = networkInterfaces["Wi-Fi"][1].address;
-  //console.log("net in ", networkInterfaces["Wi-Fi"]);
+  console.log("net in ", networkInterfaces);
   networkInterfaces["Wi-Fi"].map((net_item)=>{
     if(net_item.family == "IPv4"){
       ip = net_item.address;
