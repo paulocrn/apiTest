@@ -53,6 +53,8 @@ const notification = require("./middlewares/pushNotification");
 
 ip = "127.0.0.1";
 
+console.log("process ip ", process.env.IP);
+
 app.listen(process.env.PORT, ip);
 let dirPath = path.join(
   __dirname,
