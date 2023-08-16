@@ -17,12 +17,20 @@ let ip;
 
 if (typeof (networkInterfaces.Ethernet) == "undefined") {
   //ip = networkInterfaces["Wi-Fi"][1].address;
-  console.log("net in ", networkInterfaces);
-  networkInterfaces["Wi-Fi"].map((net_item)=>{
-    if(net_item.family == "IPv4"){
-      ip = net_item.address;
-    }
-  })
+  //console.log("net in ", networkInterfaces);
+  if (typeof (networkInterfaces["Wi-Fi"]) != "undefined") {
+    networkInterfaces["Wi-Fi"].map((net_item)=>{
+      if(net_item.family == "IPv4"){
+        ip = net_item.address;
+      }
+    })
+  }else{
+    networkInterfaces["eth0"].map((net_item)=>{
+      if(net_item.family == "IPv4"){
+        ip = net_item.address;
+      }
+    })
+  }
 } else {
   ip = networkInterfaces.Ethernet[1].address;
 }
