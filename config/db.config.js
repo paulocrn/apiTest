@@ -1,8 +1,12 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "1234",
-    DB: "testdb",
+    //HOST: "localhost",
+    HOST: "116.202.116.61",
+    //USER: "root",
+    USER: "tecnialu_root",
+    //PASSWORD: "1234",
+    PASSWORD: "tecni1234??",
+    //DB: "testdb",
+    DB: "tecnialu_apiTest",
     dialect: "mysql", 
     pool: {
         max: 5,
