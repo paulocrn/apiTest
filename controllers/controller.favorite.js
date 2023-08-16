@@ -6,6 +6,7 @@ const favorite_get = (req, res) => {
   Favorite.findAll()
     //.populate("items") //access to items ref from product
     .then((data) => {
+      console.log("data fav ", data);
       return res.status(200).send({
         status: "OK",
         message: "Lista de Favoritos",
