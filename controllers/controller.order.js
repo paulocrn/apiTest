@@ -118,12 +118,12 @@ const order_update = async (req, res) => {
     body: `Su Orden ${id.substr(id.length - 10)} se actualizó de estado a ${updateStatus}.`,
   };
   try {
-    let resOder;
-    Order.findOne({where:{id: id}}).then(async(data)=>{
+    let resOrder;
+    Order.findOne({where:{id: id}}).then((data)=>{
       if(data != null){
         //data.set();
       }
-      resOder = await data.json();
+      resOrder = data;
       console.log("find dta ", data);
     });
     
