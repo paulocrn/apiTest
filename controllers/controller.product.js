@@ -133,7 +133,7 @@ const product_post = (req, res) => {
 // eslint-disable-next-line consistent-return
 const product_update = async (req, res) => {
   const id = req.params.id;
-  const host = process.env.HOST_NAME;
+  //const host = process.env.HOST_NAME;
   let filename = "";
   let imageUrl = "";
   let resizeUrl = "";
@@ -144,31 +144,8 @@ const product_update = async (req, res) => {
       content: null,
     });
   }
-  if (req.file) {
-    filename = await req.body.filename.replace(/ +/g, "");
-    imageUrl =
-      host + "/public/api/static/images/productPictures/" + filename + ".jpg";
-    resizeUrl =
-      host +
-      "/public/api/static/images/productPictures/" +
-      "256x144-" +
-      filename +
-      ".jpg";
-  }
 
-  const product = req.file
-    ? {
-      filename: req.body.filename,
-      price: req.body.price,
-      color: req.body.color,
-      origin: req.body.origin,
-      standard: req.body.standard,
-      description: req.body.description,
-      url: imageUrl,
-      thumb: resizeUrl,
-      type: req.body.type,
-    }
-    : req.body;
+  const product = req.body;
   console.log(product);
   Product.findByIdAndUpdate(id, product)
     .then((data) => {
