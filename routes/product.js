@@ -20,8 +20,6 @@ router.post(
 //update
 router.patch(
   "/:id",
-  upload.single("imageUrl"),
-  resize,
   productController.product_update
 );
 
