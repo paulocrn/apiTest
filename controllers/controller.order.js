@@ -115,14 +115,18 @@ const order_update = async (req, res) => {
   }
   let content = {
     title: "Orden de actualización",
-    body: `Đơn hàng ${id.substr(id.length - 10)} đã được ${updateStatus}.`,
+    body: `Su Orden ${id.substr(id.length - 10)} se actualizó de estado a ${updateStatus}.`,
   };
   try {
-    const resOrder = await Order.findByIdAndUpdate(id, {
-      status: updateStatus,
+    let resOder;
+    Order.findOne({where:{id: id}}).then(async(data)=>{
+      if(data != null){
+        //data.set();
+      }
+      resOder = await data.json();
+      console.log("find dta ", data);
     });
-    const user = User.findById(resOrder.userId);
-    pushNotification(user.pushTokens, content, "");
+    
     return res.status(200).send({
       status: "OK",
       message: "Updated Order Successfully",

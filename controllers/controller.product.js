@@ -133,10 +133,7 @@ const product_post = (req, res) => {
 // eslint-disable-next-line consistent-return
 const product_update = async (req, res) => {
   const id = req.params.id;
-  //const host = process.env.HOST_NAME;
-  let filename = "";
-  let imageUrl = "";
-  let resizeUrl = "";
+
   if (!req.params.id || !req.body) {
     return res.status(200).send({
       status: "ERR_REQUEST",
@@ -146,12 +143,13 @@ const product_update = async (req, res) => {
   }
 
   const product = req.body;
-  console.log(product);
+  console.log("req prod ", product);
   Product.findOne({where:{id: id}})
     .then((data) => {
       if(data != null){
-        console.log("data find ", data);
+        //console.log("data find ", data);
       }
+      console.log("data find ", data);
 
       return res.status(200).send({
         status: "OK",
