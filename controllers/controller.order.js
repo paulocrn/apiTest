@@ -121,7 +121,7 @@ const order_update = async (req, res) => {
     let resOrder;
     Order.findOne({where:{id: id}}).then((data)=>{
       if(data != null){
-        data.set(JSON.stringify({status: updateStatus}));
+        data.set({"status": updateStatus});
         data.save().then((act_data)=>{
           console.log("act dta ", act_data);
         })
