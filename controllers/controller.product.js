@@ -147,8 +147,12 @@ const product_update = async (req, res) => {
 
   const product = req.body;
   console.log(product);
-  Product.findByIdAndUpdate(id, product)
+  Product.findOne({where:{id: id}})
     .then((data) => {
+      if(data != null){
+        console.log("data find ", data);
+      }
+
       return res.status(200).send({
         status: "OK",
         message: "Updated Product Successfully",
