@@ -123,18 +123,19 @@ const order_update = async (req, res) => {
       if(data != null){
         data.set({"status": updateStatus});
         data.save().then((act_data)=>{
-          console.log("act dta ", act_data);
+          //console.log("act dta ", act_data);
         })
       }
       resOrder = data;
       //console.log("find dta ", data);
+      return res.status(200).send({
+        status: "OK",
+        message: "Updated Order Successfully",
+        content: resOrder,
+      });
     });
     
-    return res.status(200).send({
-      status: "OK",
-      message: "Updated Order Successfully",
-      content: resOrder,
-    });
+    
   } catch (err) {
     return res.status(400).send({
       status: "ERR_SERVER",
