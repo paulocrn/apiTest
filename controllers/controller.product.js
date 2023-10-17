@@ -147,10 +147,10 @@ const product_update = async (req, res) => {
   Product.findOne({where:{id: id}})
     .then((data) => {
       if(data != null){
-        //console.log("data find ", data);
+        console.log("product ", product);
         data.set(product);
         data.save().then((act_data)=>{
-          //console.log("act dta ", act_data);
+          console.log("act dta ", act_data);
         })
       }
       console.log("data find ", data);
