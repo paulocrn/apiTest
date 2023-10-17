@@ -143,7 +143,7 @@ const product_update = async (req, res) => {
   }
 
   const product = req.body;
-  console.log("req prod ", product);
+  console.log("req prodd ", product);
   Product.findOne({where:{id: id}})
     .then((data) => {
       if(data != null){
